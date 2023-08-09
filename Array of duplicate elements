@@ -1,0 +1,16 @@
+function findDuplicate(arr){
+//Implement your function here
+    let duplicateElements = [];
+  let uniqueElements = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (uniqueElements[arr[i]] === undefined) {
+      uniqueElements[arr[i]] = true;
+    } else if (!duplicateElements.includes(arr[i])) {
+      duplicateElements.push(arr[i]);
+    }
+  }
+
+  return duplicateElements;
+}    
+console.log(findDuplicate(arr));
