@@ -1,0 +1,21 @@
+URL constructor
+Send Feedback
+Develop a utility function called "URLConstructor" that constructs a URL based on the provided arguments.
+
+
+function URLconstructor(){
+//Implement Your function here
+    const queryString = Object.keys(queryParameters).map(key => `${key}=${queryParameters[key]}`).join('&');
+    
+    const url = `https://${domain}${path}?${queryString}`;
+    return url;
+    
+// 	const queryString = Object.keys(queryParameters)
+//         .map(key => `${key}=${queryParameters[key]}`)
+//         .join('&');
+
+//     const url = `https://${domain}${path}?${queryString}`;
+//     return url;
+}
+ 
+console.log(URLconstructor(queryParameters,domain,path));
