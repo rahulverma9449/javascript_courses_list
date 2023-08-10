@@ -1,0 +1,14 @@
+   function calculatePrice(goods){
+        //Implement your function here
+        let totalPrice = 0;
+
+    for (const product in goods) {
+        const { price, quantity } = goods[product];
+        totalPrice += price * quantity;
+    }
+
+    return totalPrice;
+ }
+    
+    console.log(calculatePrice(goods));
+    //output : 650
