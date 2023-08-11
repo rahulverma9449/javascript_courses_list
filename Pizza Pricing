@@ -1,0 +1,28 @@
+
+    //create you curried function here with name pizzaPricing.
+function pizzaPricing(size) {
+  const sizes = {
+    small: 8.00,
+    medium: 10.00,
+    large: 12.00
+  };
+
+  return function(toppings) {
+    return function(quantity) {
+      const basePrice = sizes[size.toLowerCase()];
+      const toppingPrice = 1.50 * toppings.length;
+      const totalPrice = (basePrice + toppingPrice) * quantity;
+      return totalPrice.toFixed(2);
+    }
+  }
+}
+
+// Example usage:
+const calculatePrice = pizzaPricing("medium");
+
+const toppings = ["pepperoni", "mushrooms", "onions"];
+const quantity = 3;
+
+const totalPrice = calculatePrice(toppings)(quantity);
+console.log(totalPrice); // Output: "40.50"
+ 
