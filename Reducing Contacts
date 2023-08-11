@@ -1,0 +1,27 @@
+  const contacts = [
+    { name: "Alice", company: "ABC Inc." },
+    { name: "Bob", company: "XYZ Corp." },
+    { name: "Charlie", company: "ABC Inc." }
+  ];
+ 
+  function mapContactsToCompanies(contacts) {
+  const companyMap = {};
+
+  for (const contact of contacts) {
+    const { name, company } = contact;
+
+    if (companyMap[company]) {
+      companyMap[company].push(name);
+    } else {
+      companyMap[company] = [name];
+    }
+  }
+
+  return companyMap;
+}
+
+// Example usage:
+ 
+
+const result = mapContactsToCompanies.reduce(contacts);
+console.log(result);
