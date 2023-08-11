@@ -1,0 +1,24 @@
+//Complete the createUserObjects function
+//Do not alter the starter Code
+    const ids = [1, 2, 3];
+    const names = ["John", "Jane", "Alice"];
+    const images = ["john.jpg", "jane.jpg", "alice.jpg"];
+    function createUserObjects(ids, names, images) {
+  const users = [];
+
+  for (let i = 0; i < ids.length; i++) {
+    const user = {
+      id: ids[i],
+      name: names[i],
+      image: images[i]
+    };
+    users.push(user);
+  }
+
+  return users;
+}
+
+// Example usage:
+
+const userObjects = createUserObjects.map(ids, names, images);
+console.log(userObjects);
