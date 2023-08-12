@@ -1,0 +1,34 @@
+Object.create
+Send Feedback
+You are working on a project that involves managing user profiles. Each user profile is represented as an object with properties such as name, age, and email.
+
+// Instructions:
+// 1. Implement the updateProfile function to update the user profile using Object.assign.
+// 2. Implement the freezeProfile function to freeze the user profile using Object.freeze.
+
+function updateProfile(user, updates) {
+  // Use Object.assign to update the user profile with the properties from updates
+  return Object.assign({}, user, updates);
+}
+
+function freezeProfile(user) {
+  // Use Object.freeze to make the user profile object immutable
+  return Object.freeze(user);
+}
+
+// Example usage:
+const user1 = {
+  name: "John Doe",
+  age: 30,
+  email: "john.doe@example.com",
+};
+
+const updatedUser1 = updateProfile(user1, { age: 31, email: "updated.email@example.com" });
+console.log("Updated user 1:", updatedUser1);
+
+const frozenUser1 = freezeProfile(updatedUser1);
+frozenUser1.name = "Jane Doe"; // Attempt to modify a property after freezing
+console.log("Frozen user 1 after modification attempt:", frozenUser1);
+
+
+  
