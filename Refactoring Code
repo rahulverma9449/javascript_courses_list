@@ -1,0 +1,51 @@
+Refactoring Code
+Send Feedback
+For this question, you need to refactor the Car Class and its methods into the constructor function.
+
+function main() {
+  function Car(make, model, year, color, mileage) {
+    // Properties
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.color = color;
+    this.mileage = mileage;
+
+    // Method
+    this.getMake = function() {
+      return this.make;
+    };
+  }
+
+  // Method
+  Car.prototype.getModel = function() {
+    return this.model;
+  };
+
+  // Method
+  Car.prototype.getYear = function() {
+    return this.year;
+  };
+
+  // Method
+  Car.prototype.getColor = function() {
+    return this.color;
+  };
+
+  // Method
+  Car.prototype.getMileage = function() {
+    return this.mileage;
+  };
+
+  const myCar = new Car("Toyota", "Camry", 2020, "blue", 5000);
+  console.log(myCar.getMake());
+  console.log(myCar.getModel());
+  console.log(myCar.getYear());
+  console.log(myCar.getColor());
+  console.log(myCar.getMileage());
+
+  // Do not modify the return statement;
+  return Car;
+}
+
+main();
