@@ -1,0 +1,122 @@
+class User {
+  constructor(name, email, password) {
+    this._name = name;
+    this._email = email;
+    this._password = password;
+    this._posts = [];
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(value) {
+    this._name = value;
+  }
+
+  get email() {
+    return this._email;
+  }
+
+  set email(value) {
+    this._email = value;
+  }
+
+  get password() {
+    return this._password;
+  }
+
+  set password(value) {
+    this._password = value;
+  }
+
+  addPost(post) {
+    this._posts.push(post);
+  }
+
+  deletePost(post) {
+    const index = this._posts.indexOf(post);
+    if (index !== -1) {
+      this._posts.splice(index, 1);
+    }
+  }
+
+  displayPosts() {
+    console.log(`Posts by ${this.name}:`);
+    for (const post of this._posts) {
+      console.log(`- ${post.title}`);
+    }
+  }
+}
+
+class Post extends User {
+  constructor(ownerName, ownerEmail, ownerPassword, title, content, date) {
+    super(ownerName, ownerEmail, ownerPassword);
+    this._title = title;
+    this._content = content;
+    this._date = date;
+    this._likeCount = 0;
+  }
+
+  get title() {
+    return this._title;
+  }
+
+  set title(value) {
+    this._title = value;
+  }
+
+  get content() {
+    return this._content;
+  }
+
+  set content(value) {
+    this._content = value;
+  }
+
+  get date() {
+    return this._date;
+  }
+
+  set date(value) {
+    this._date = value;
+  }
+
+  addLike() {
+    this._likeCount++;
+  }
+    get likeCount() {
+      return this._likeCount;
+    }
+
+  displayDetails() {
+     console.log(`Name: ${this.name}`);
+    console.log(`Title: ${this.title}`);
+    console.log(`Content: ${this.content}`);
+    console.log(`Date: ${this.date}`);
+    console.log(`Likes: ${this._likeCount}`);
+  }
+   
+}
+
+// Example usage:
+function main() {
+  const user1 = new User("John", "john@example.com", "password123");
+  const post1 = new Post("John", "john@example.com", "password123", "My first post", "Lorem ipsum dolor sit amet", "2021-01-01");
+  const post2 = new Post("John", "john@example.com", "password123", "My second post", "Consectetur adipiscing elit", "2021-01-02");
+
+  user1.addPost(post1);
+  user1.addPost(post2);
+
+  post1.addLike();
+  post1.addLike();
+
+  user1.displayPosts();
+  post1.displayDetails();
+
+  // Return the classes to fulfill the main's return requirement
+  return { User, Post };
+}
+
+// Run the main function
+main();
