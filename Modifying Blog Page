@@ -1,0 +1,83 @@
+function addBlog(blog) {
+  const blogList = document.querySelector('.blog-list');
+
+  const newBox = document.createElement('div');
+  newBox.classList.add('blog-box');
+
+  const newBlogPost = document.createElement('div');
+  newBlogPost.classList.add('blog-post');
+  newBox.appendChild(newBlogPost);
+
+  const newBlogHeader = document.createElement('div');
+  newBlogHeader.classList.add('blog-header');
+  newBlogPost.appendChild(newBlogHeader);
+
+  const newBlogTitle = document.createElement('h2');
+  newBlogTitle.classList.add('blog-title');
+  newBlogTitle.textContent = blog.title;
+  newBlogHeader.appendChild(newBlogTitle);
+
+  const newBlogDate = document.createElement('p');
+  newBlogDate.classList.add('blog-date');
+  newBlogDate.textContent = blog.date;
+  newBlogHeader.appendChild(newBlogDate);
+
+  const newBlogContent = document.createElement('p');
+  newBlogContent.classList.add('blog-content');
+  newBlogContent.textContent = blog.content;
+  newBlogPost.appendChild(newBlogContent);
+
+  // Create and add buttons
+  const buttonsDiv = document.createElement('div');
+  buttonsDiv.classList.add('blog-buttons');
+  newBox.appendChild(buttonsDiv);
+
+  const moveUpButton = document.createElement('button');
+  moveUpButton.classList.add('blog-button', 'move-up');
+  moveUpButton.textContent = 'Move Up';
+  moveUpButton.addEventListener('click', () => moveBlogUp(newBox));
+  buttonsDiv.appendChild(moveUpButton);
+
+  const moveDownButton = document.createElement('button');
+  moveDownButton.classList.add('blog-button', 'move-down');
+  moveDownButton.textContent = 'Move Down';
+  moveDownButton.addEventListener('click', () => moveBlogDown(newBox));
+  buttonsDiv.appendChild(moveDownButton);
+
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('blog-button', 'delete');
+  deleteButton.textContent = 'Delete';
+  deleteButton.addEventListener('click', () => deleteBlog(newBox));
+  buttonsDiv.appendChild(deleteButton);
+
+  blogList.appendChild(newBox);
+}
+
+function moveBlogUp(blogBox) {
+  const blogList = document.querySelector('.blog-list');
+  const index = Array.from(blogList.children).indexOf(blogBox);
+
+  if (index > 0) {
+    blogList.insertBefore(blogBox, blogList.children[index - 1]);
+  }
+}
+
+function moveBlogDown(blogBox) {
+  const blogList = document.querySelector('.blog-list');
+  const index = Array.from(blogList.children).indexOf(blogBox);
+
+  if (index < blogList.children.length - 1) {
+    blogList.insertBefore(blogBox, blogList.children[index + 2]);
+  }
+}
+
+function deleteBlog(blogBox) {
+  const blogList = document.querySelector('.blog-list');
+  blogList.removeChild(blogBox);
+}
+
+const blogData = [
+  // Your blog data objects here
+];
+
+blogData.forEach(blog => addBlog(blog));
