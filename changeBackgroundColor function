@@ -1,0 +1,13 @@
+function changeBackgroundColor(selector) {
+  const elements = document.querySelectorAll(selector);
+	
+     
+    elements.forEach(element => {
+    element.style.backgroundColor = 'yellow';
+    element.style.color="black";
+      
+  });
+}
+ 
+ 
+ 
