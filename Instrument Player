@@ -1,0 +1,38 @@
+document.addEventListener("DOMContentLoaded", function() {
+  const buttons = document.querySelectorAll(".drum");
+  
+  buttons.forEach(button => {
+    button.addEventListener("click", function() {
+      const soundURL = this.getAttribute("data-sound");
+      playSound(soundURL);
+    });
+  });
+
+  document.addEventListener("keydown", function(event) {
+    const key = event.key.toLowerCase();
+    const soundURL = getSoundURLByKey(key);
+    
+    if (soundURL) {
+      playSound(soundURL);
+    }
+  });
+
+  function playSound(soundURL) {
+    const audio = new Audio(soundURL);
+    audio.play();
+  }
+
+  function getSoundURLByKey(key) {
+    const soundMap = {
+      "w": "https://files.codingninjas.in/tom-1-28537.mp3",
+      "a": "https://files.codingninjas.in/tom-2-28541.mp3",
+      "s": "https://files.codingninjas.in/tom-3-28542.mp3",
+      "d": "https://files.codingninjas.in/tom-4-28543.mp3",
+      "j": "https://files.codingninjas.in/snare-28545.mp3",
+      "k": "https://files.codingninjas.in/crash-28546.mp3",
+      "l": "https://files.codingninjas.in/kick-bass-28547.mp3"
+    };
+
+    return soundMap[key] || null;
+  }
+});
